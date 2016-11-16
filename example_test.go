@@ -10,7 +10,7 @@ import (
 	"github.com/yuroyoro/httpmocker"
 )
 
-func ExampleHTTPMocker() {
+func ExampleLaunch() {
 	server := httpmocker.Launch().Add(
 		"GET",
 		"/hello",
@@ -38,7 +38,7 @@ func ExampleHTTPMocker() {
 	// hello, world
 }
 
-func ExampleHTTPMockerWithHeader() {
+func ExampleLaunch_WithHeader() {
 	server := httpmocker.Launch(
 		httpmocker.Response{
 			Method:      "GET",
@@ -74,7 +74,7 @@ func ExampleHTTPMockerWithHeader() {
 	// hello, world
 }
 
-func ExampleHTTPMockerWithCustomHandler() {
+func ExampleLaunch_WithCustomHandler() {
 	server := httpmocker.Launch(
 		httpmocker.Response{
 			Method: "GET",
@@ -106,7 +106,7 @@ func ExampleHTTPMockerWithCustomHandler() {
 	// hello, world from custom handler
 }
 
-func ExampleHTTPMockerWithUnknownHandler() {
+func ExampleLaunch_WithUnknownHandler() {
 	server := httpmocker.Launch()
 	server.UnknownRequestHandler = func(w http.ResponseWriter, req *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
