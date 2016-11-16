@@ -52,6 +52,17 @@ func (server *Server) Add(method, path string, code int, body string) *Server {
 	return server
 }
 
+// AddEmptyResponse : add empyt mock response to mock server
+func (server *Server) AddEmptyResponse(method, path string, code int) *Server {
+	server.AddResponses(Response{
+		Method: method,
+		Path:   path,
+		Code:   code,
+	})
+
+	return server
+}
+
 // AddResponses : add mock response to mock server
 func (server *Server) AddResponses(responses ...Response) *Server {
 
